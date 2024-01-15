@@ -1,20 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Torun It On{% endblock %}
 
 {% block body %}
-{#<style>#}
-{#    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }#}
-{#    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }#}
-{#</style>#}
+    <div class="d-flex justify-content-center" style="min-width: 100vh;">
+        <form class="col-3 col-lg-3 mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+        </form>
+    </div>
 
-{#<div class="example-wrapper">#}
-{#    <h1>Hello {{ controller_name }}! ✅</h1>#}
+    <div class="d-flex justify-content-around flex-wrap" style="margin-bottom: 2vh;">
+        {% for i in 0..11 %}
+            <div class="d-flex" style="background-color: white; border-radius: 24px; height: 300px; width: 350px; margin-top: 40px;">
 
-{#    This friendly message is coming from:#}
-{#    <ul>#}
-{#        <li>Your controller at <code><a href="{{ '/home/kblu/Projects/tourItOn/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>#}
-{#        <li>Your template at <code><a href="{{ '/home/kblu/Projects/tourItOn/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>#}
-{#    </ul>#}
-{#</div>#}
+                <div style="padding: 20px; width: 350px;" class="d-flex flex-column align-items-center">
+                    <div class="tournament-card order-0">
+                        <p>{{ i }}. HUMBLE RUMBLE</p>
+                    </div>
+                    <div class="tournament-body order-1">
+                        <img src="/assets/images/icons8-burger-king-logo-50.png" alt="">
+                    </div>
+                    <div class="tournament-footer d-flex flex-row order-2 justify-content-between" style="width: 250px;">
+                        <div class="">
+                            <p>10.01.2024 15:00Uhr</>
+                            <p>16.01.2024 15:00Uhr</p>
+                        </div>
+                        <div class="">
+                            <a href="" class="btn btn-primary btn-info">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>>
+{% endblock %}
+
+{% block base_footer %}
+    <div class="d-flex justify-content-around" style="position: fixed; left: 0; bottom: 0; background-color: aquamarine; width: 100%">
+        <div class="d-flex">
+            <h1>Home</h1>
+        </div>
+        <div class="d-flex">
+            <h1><a href="{{ route_type.1 }}">{{ route_type.0 }}</a></h1>
+        </div>
+    </div>
 {% endblock %}
