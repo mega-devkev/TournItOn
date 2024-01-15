@@ -1,19 +1,26 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Register{% endblock %}
-
 {% block body %}
-    <h1>Register</h1>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<div class="SignIn" style="width: 100%; height: 100%; background: #26868B">
+    <div class="SignIn" style="width: 50%; height: 100%; background: #26868B">
+        <div class="Rectangle1" style="width: 464px; height: 441px; left: 637px; top: 122px; position: absolute; background: white; border-radius: 45px">
+            <div style="margin: 35px;">
+                {{ form_errors(registrationForm) }}
 
-    {{ form_errors(registrationForm) }}
+                {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.username) }}
+                {{ form_row(registrationForm.password, {
+                label: 'Password'
+            }) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
-{% endblock %}
+                <button type="submit" class="btn">Register</button>
+                {{ form_end(registrationForm) }}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="Line3" style="width: 395.01px; height: 0px; left: 209px; top: 460px; position: absolute; border: 1px #E4D9D9 solid"></div>
+        <div class="Trophy" style="width: 170px; height: 170px; padding-left: 28.56px; padding-right: 28.56px; padding-top: 14.96px; padding-bottom: 14.96px; left: 222px; top: 271px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+            <img class="Vector" style="width: 112.88px; height: 140.08px;" src="https://static.thenounproject.com/png/3390754-200.png" alt="Tourn It On">
+        </div>
+        <div class="UserRegister" style="width: 330px; height: 54px; left: 209px; top: 205px; position: absolute; color: #AAAAAA; font-size: 24px; font-family: Telex; font-weight: 400; word-wrap: break-word">User Register</div>
+    </div>
