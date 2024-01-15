@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Tournament;
 use App\Repository\TournamentRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,10 +18,10 @@ class HomeController extends AbstractController
     {
 
         if (!$this->getUser()) {
-            $userRoute = ['login', 'login'];
+            $userRoute = ['login', 'login', '/assets/images/user.png'];
 
         } else {
-            $userRoute = ['My Tournaments', 'tournaments'];
+            $userRoute = ['My Tournaments', 'tournaments', '/assets/images/mytourns.png'];
         }
 
         return $this->render('home/index.html.twig', [
@@ -65,27 +66,25 @@ class HomeController extends AbstractController
     }
 
     #[Route('/tournaments/new', name: 'app_new_tournaments')]
-    public function newTournament(Request $request, TournamentRepository $tournamentRepository): Response
+    public function newTournament(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $user = new Tournament();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $tournament = new Tournament();
+        $form = $this->createForm(RegistrationFormType::class, $tournament);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('password')->getData()
-                )
-            );
 
-            $entityManager->persist($user);
+            // TODO: handle form here
+
+            $entityManager->persist($tournament);
             $entityManager->flush();
-            // do anything else you need here, like send an email
-            // TODO: redirect ändern
             return $this->redirectToRoute('app_home');
         }
+        return $this->render('home/index.html.twig', [
+            'route_type' => $userRoute,
+            'tournaments' => $tournaments = $tournamentRepository->findAll()
+        ]);
     }
 
     private function searchUser()
