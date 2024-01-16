@@ -1,5 +1,13 @@
 {% extends 'base.html.twig' %}
 
+        {% block stylesheets %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ parent() }}
+        {% endblock %}
+
 {% block title %}Torun It On{% endblock %}
 
 {% block body %}
@@ -48,10 +56,9 @@
 
 {% block base_footer %}
     {% if is_granted('IS_AUTHENTICATED') %}
-        {{ dump() }}
     {% endif %}
 
-    <div class="d-flex justify-content-around" style="position: fixed; left: 0; bottom: 0; background-color: aquamarine; width: 100%">
+    <div class="d-flex justify-content-around footer" style="position: fixed; left: 0; bottom: 0; width: 100%">
         <div class="d-flex">
             <h1><a href="/"><img width="40px" height="40px" src="/assets/images/home.png" alt=""> Home</a></h1>
         </div>

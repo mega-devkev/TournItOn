@@ -1,3 +1,78 @@
+:root {
+    --bs-primary: #eee9ff;
+    --bs-secondary: #090909;
+    --background-primary: #eee9ff;
+    --background-secondary:#aa9fd3;
+}
+
 body {
-    background-color: skyblue;
+    background-color: #eee9ff;
+}
+
+#main {
+    overflow-y: hidden;
+    background-color: var(--background-primary);
+}
+
+header {
+    background-color: var(--background-secondary);
+}
+
+.footer {
+    background-color: var(--background-secondary);
+
+}
+
+.login-container {
+    height: 80vh;
+}
+
+.login-left {
+    height: 80vh;
+    width: 480px;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-right {
+    height: 80vh;
+    width: 480px;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form-container {
+    height: 50vh;
+    width: 480px;
+    background-color: #fff;
+    border-radius: 48px;
+}
+
+.login-form-container h1{
+    margin: 24px 24px 24px 0;
+}
+
+.login-form-container #inputEmail{
+    margin: 24px 24px 24px 0;
+}
+
+.login-form-container #inputPassword    {
+    margin: 24px 24px 24px 0;
+}
+
+.login-form-container form{
+    width: 400px;
+    justify-items: center;
+}
+
+
+
+.card-body {
+    background-color: #fff;
+    height: 300px;
+    width: 450px;
+}
+
+.card-inner {
+
 }
