@@ -14,7 +14,7 @@
         {% endblock %}
     </head>
     <body>
-        <div class="" style="background-color: #a78bfa">
+        <div>
             <header class="d-flex justify-content-around py-3 align-items-center">
                 <div class="d-flex flex-row">
                     <div><img width="50px" src="/assets/images/trophy.png" alt=""></div>
@@ -39,16 +39,14 @@
                 </div>
             </header>
         </div>
-        <div id="main" class="container" style="background-color: #93c5fd; overflow-y: hidden">
+        <div id="main" class="container">
             {% block body %}
 
             {% endblock %}
         </div>
-        <footer>
 
-        {% block base_footer%}
+            {% block base_footer%}
 
-        {% endblock %}
-        </footer>
+            {% endblock %}
     </body>
 </html>
