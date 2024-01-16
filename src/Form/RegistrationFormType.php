@@ -28,8 +28,8 @@ class RegistrationFormType extends AbstractType
                     new NotBlank(),
                     new Length(array('min' => 6)),
                 ),
-                'first_options'  => array('label' => 'password'),
-                'second_options' => array('label' => 'passwordConfirmation'),
+                'first_options'  => array('label' => 'Password'),
+                'second_options' => array('label' => 'Repeat Password'),
             ));
     }
 
