@@ -43,6 +43,10 @@ class Tournament
     #[ORM\OneToMany(mappedBy: 'tournament', targetEntity: Statistic::class)]
     private Collection $statisticID;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $userId = null;
+
     public function __construct()
     {
         $this->statisticID = new ArrayCollection();
@@ -175,6 +179,18 @@ class Tournament
                 $statisticID->setTournament(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(?User $userId): static
+    {
+        $this->userId = $userId;
 
         return $this;
     }

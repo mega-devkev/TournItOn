@@ -1,0 +1,13 @@
+{% extends 'home/index.html.twig' %}
+
+{% block base_footer %}
+{% endblock %}
+
+{% block settings_button %}
+        <div class="">
+            <a href="{{ path('app_settings', {id: tournament.id}) }}" class="btn">
+                <img width="20px" height="20px" src="/assets/images/settings.png" alt="">
+            </a>
+        </div>
+{% endblock %}
+
