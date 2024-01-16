@@ -68,22 +68,24 @@ class HomeController extends AbstractController
     #[Route('/tournaments/new', name: 'app_new_tournaments')]
     public function newTournament(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $tournament = new Tournament();
-        $form = $this->createForm(RegistrationFormType::class, $tournament);
-        $form->handleRequest($request);
+//        $tournament = new Tournament();
+//        $form = $this->createForm(RegistrationFormType::class, $tournament);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            // encode the plain password
+//
+//            // TODO: handle form here
+//
+//            $entityManager->persist($tournament);
+//            $entityManager->flush();
+//            return $this->redirectToRoute('app_home');
+//        }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
 
-            // TODO: handle form here
 
-            $entityManager->persist($tournament);
-            $entityManager->flush();
-            return $this->redirectToRoute('app_home');
-        }
         return $this->render('home/index.html.twig', [
-            'route_type' => $userRoute,
-            'tournaments' => $tournaments = $tournamentRepository->findAll()
+            'tournaments' => 1
         ]);
     }
 

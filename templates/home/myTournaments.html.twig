@@ -1,5 +1,8 @@
 {% extends 'home/index.html.twig' %}
 
+{% block base_footer %}
+{% endblock %}
+
 {% block settings_button %}
         <div class="">
             <a href="{{ path('app_settings', {id: tournament.id}) }}" class="btn">
@@ -7,3 +10,4 @@
             </a>
         </div>
 {% endblock %}
+
