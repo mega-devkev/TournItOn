@@ -42,7 +42,7 @@ header {
 }
 
 .login-form-container {
-    height: 50vh;
+    height: 57vh;
     width: 480px;
     background-color: #fff;
     border-radius: 48px;
@@ -63,16 +63,4 @@ header {
 .login-form-container form{
     width: 400px;
     justify-items: center;
-}
-
-
-
-.card-body {
-    background-color: #fff;
-    height: 300px;
-    width: 450px;
-}
-
-.card-inner {
-
 }
