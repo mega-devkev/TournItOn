@@ -1,24 +1,111 @@
-{% extends 'base.html.twig' %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-{% block title %}Hello WizardController!{% endblock %}
+</head>
 
-{% block body %}
-<div>
-	Steps:
-	{% include '@CraueFormFlow/FormFlow/stepList.html.twig' %}
-</div>
-{{ form_start(form) }}
-	{{ form_errors(form) }}
+<div class="Overview" style="width: 100%; height: 100%; background: #F3FDF6">
+	<div class="Trophy" style="width: 170px; height: 170px; padding-left: 28.56px; padding-right: 28.56px; padding-top: 14.96px; padding-bottom: 14.96px; left: 72px; top: 72px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+		<img class="Vector" style="width: 112.88px; height: 140.08px;" src="https://static.thenounproject.com/png/3390754-200.png" alt="Tourn It On">
+	</div>
+	<!-- Region Stepper -->
+	<div class="Registration" style="width: 1792px; left: 290px; top: 109px; position: absolute; color: #1E1E1E; font-size: 64px; font-family: Figma Hand; font-weight: 700; text-transform: uppercase; line-height: 96px; word-wrap: break-word">Registration</div>
+	<div id="step3" class="Ellipse13" style="width: 52px; height: 53px; left: 1201px; top: 347px; position: absolute; background: #A5A0A0; border-radius: 199px;"></div>
+	<div id="step1" class="Ellipse12" style="width: 52px; height: 53px; left: 490px; top: 354px; position: absolute; background: #545970; border-radius: 199px"></div>
+	<div id="step2" class="Ellipse6" style="width: 52px; height: 53px; left: 885px; top: 351px; position: absolute; background: #A5A0A0; border-radius: 199px;"></div>
+	<div id="step4" class="Ellipse10" style="width: 52px; height: 53px; left: 1607px; top: 348px; position: absolute; background: #A5A0A0; border-radius: 199px;"></div>
+	<div class="Allgemein" style="width: 210px; height: 69px; left: 450px; top: 280px; position: absolute; color: #110F0F; font-size: 40px; font-family: Roboto; font-weight: 500; word-wrap: break-word">Allgemein</div>
+	<div class="Line6" style="width: 340.95px; height: 0px; left: 887px; top: 381px; position: absolute; transform: rotate(179.79deg); transform-origin: 0 0; border: 2px #9597A7 solid"></div>
+	<div class="Line4" style="width: 268.01px; height: 0px; left: 1203px; top: 378px; position: absolute; transform: rotate(179.63deg); transform-origin: 0 0; border: 2px #9597A7 solid"></div>
+	<div class="Line5" style="width: 357.01px; height: 0px; left: 1610px; top: 380px; position: absolute; transform: rotate(-179.68deg); transform-origin: 0 0; border: 2px #9597A7 solid"></div>
+	<div class="Logo" style="width: 107px; height: 69px; left: 866px; top: 280px; position: absolute; color: #110F0F; font-size: 40px; font-family: Roboto; font-weight: 300; word-wrap: break-word">Logo</div>
+	<div class="Individualisierung" style="width: 369px; height: 69px; left: 1090px; top: 280px; position: absolute; color: #131212; font-size: 40px; font-family: Roboto; font-weight: 300; word-wrap: break-word">Individualisierung</div>
+	<div class="PlayerTeam" style="width: 298px; height: 69px; left: 1529px; top: 271px; position: absolute; color: #110F0F; font-size: 40px; font-family: Roboto; font-weight: 300; word-wrap: break-word">Player / Team</div>
 
+	<!-- Region Button -->
+	
+	{% block body %}
+	
+	{{ form_start(form) }}
+	
+	<!-- Region Form -->
+	<div style="width: 424px; height: 128px; left: 950px; top: 500px; position: absolute">
+		{{ form_errors(form) }}
+	</div>
 	{% if flow.getCurrentStepNumber() == 1 %}
-		<div>
-			When selecting four wheels you have to choose the engine in the next step.<br />
-			
-		</div>
-	{% endif %}
+	<div class="Group80" style="width: 424px; height: 128px; left: 600px; top: 660px; position: absolute">
+		{{ form_row(form.name) }}
+	</div>
 
-	{{ form_rest(form) }}
+	<div class="Group81" style="width: 424px; height: 128px; left: 1235px; top: 660px; position: absolute">
+		{{ form_row(form.location) }}
+	</div>
+	<div class="Group82" style="width: 333px; height: 111px; left: 609px; top: 872px; position: absolute">
+		{{ form_row(form.startTime) }}
+	</div>
+	<div class="Group83" style="width: 333px; height: 111px; left: 1235px; top: 872px; position: absolute">
+		{{ form_row(form.endTime) }}
+	</div>
 
-	{% include '@CraueFormFlow/FormFlow/buttons.html.twig' %}
+	{% elseif flow.getCurrentStepNumber() == 2 %}
+	<script>
+		document.getElementById("step1").style.background = "green";
+		document.getElementById("step2").style.background = "#545970";
+	</script>
+	<div class="Group80" style="width: 424px; height: 128px; left: 600px; top: 660px; position: absolute">
+		{{ form_row(form.logoURL) }} 
+	</div>
+
+	<div class="Group81" style="width: 424px; height: 128px; left: 1235px; top: 660px; position: absolute">
+		{{ form_row(form.mainSponsor) }}
+	</div>
+
+	<div class="Group82" style="width: 333px; height: 111px; left: 609px; top: 872px; position: absolute">
+		{{ form_row(form.secondarySponsor) }}
+	</div>
+
+	{% elseif flow.getCurrentStepNumber() == 3 %}
+	<script>
+		document.getElementById("step1").style.background = "green";
+		document.getElementById("step2").style.background = "green";
+		document.getElementById("step3").style.background = "#545970";
+	</script>
+
+	<div class="Group80" style="width: 424px; height: 128px; left: 600px; top: 660px; position: absolute">
+		{{ form_row(form.PlayerCard) }}
+	</div>
+
+	<div class="Group81" style="width: 424px; height: 128px; left: 1235px; top: 660px; position: absolute">
+		{{ form_row(form.TextColor) }}
+	</div>
+	<div class="Group82" style="width: 333px; height: 111px; left: 609px; top: 872px; position: absolute">
+		{{ form_row(form.Font) }}
+	</div>
+	<div class="Group83" style="width: 333px; height: 111px; left: 1235px; top: 872px; position: absolute">
+		{{ form_row(form.PrimaryColor) }}
+	</div>
+	{% elseif flow.getCurrentStepNumber() == 4 %}
+	<script>
+		document.getElementById("step1").style.background = "green";
+		document.getElementById("step2").style.background = "green";
+		document.getElementById("step3").style.background = "green";
+		document.getElementById("step4").style.background = "#545970";
+	</script>
+	<div class="Group80" style="width: 424px; height: 128px; left: 600px; top: 660px; position: absolute">
+		{{ form_row(form.PlayerOrTeamName) }}
+	</div>
+
+	<div class="Group81" style="width: 424px; height: 128px; left: 1235px; top: 660px; position: absolute">
+		{{ form_row(form.Stats) }}
+	</div>
+</div>
+{% endif %}
+
+<div class="Group79" style="width: 1014px; height: 154px; left: 639px; top: 1151px; position: absolute">
+		{% include '@CraueFormFlow/FormFlow/buttons.html.twig' %}
+		<!-- <button style="width: 362.56px; height: 154px; padding-left: 110px; padding-right: 110px; padding-top: 31px; padding-bottom: 31px; left: 0px; top: 0px; position: absolute; border-radius: 40px; border: 4px #9597A7 solid" type="button" class="btn btn-secondary"><i style="font-size: 5rem;" class="bi bi-arrow-left-circle"></i></button>
+		<button style="width: 359.67px; height: 154px; padding-left: 110px; padding-right: 110px; padding-top: 31px; padding-bottom: 31px; left: 654.33px; top: 0px; position: absolute; border-radius: 40px; border: 4px #9597A7 solid" type="button" class="btn btn-secondary"><i style="font-size: 5rem;" class="bi bi-arrow-right-circle"></i></button> -->
+		<!-- <button class="Frame2" style="width: 359.67px; height: 154px; padding-left: 110px; padding-right: 110px; padding-top: 31px; padding-bottom: 31px; left: 654.33px; top: 0px; position: absolute; background: #545970; border-radius: 40px; border: 4px #9597A7 solid; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">Next</button> -->
+	</div>
 {{ form_end(form) }}
+
 {% endblock %}

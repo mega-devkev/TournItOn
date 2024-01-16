@@ -2,47 +2,74 @@
 
 namespace App\Controller;
 
+use Craue\FormFlowBundle\Form\FormFlowInterface;
+use Craue\FormFlowBundle\Util\FormFlowUtil;
+use App\Entity\Tournament;
+use App\Form\CreateWizardFlow;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Form\CreateWizardForm;
-use App\Form\CreateWizardFlow;
+use Twig\Environment;
 
+class WizardController extends AbstractController {
 
-class WizardController extends AbstractController
-{
-    #[Route('/wizard', name: 'app_wizard')]
-    public function index(CreateWizardFlow $flow): Response
-    {
-        //$formData = new Vehicle(); // Your form data class. Has to be an object, won't work properly with an array.
+	/**
+	 * @var FormFlowUtil
+	 */
+	private $formFlowUtil;
 
-	//$flow = $this->get('tournItOn.form.flow.createWizard'); // must match the flow's service id
-    
-	//$flow->bind($formData);
+	/**
+	 * @var Environment
+	 */
+	private $twig;
 
-	// form of the current step
-	$form = $flow->createForm();
-	if ($flow->isValid($form)) {
-		$flow->saveCurrentStepData($form);
-
-		if ($flow->nextStep()) {
-			// form for the next step
-			$form = $flow->createForm();
-		} else {
-			// flow finished
-			$em = $this->getDoctrine()->getManager();
-			$em->persist($formData);
-			$em->flush();
-
-			$flow->reset(); // remove step data from the session
-
-			return $this->redirectToRoute('home'); // redirect when done
-		}
+	public function __construct(FormFlowUtil $formFlowUtil, Environment $twig) {
+		$this->formFlowUtil = $formFlowUtil;
+		$this->twig = $twig;
 	}
 
-	return $this->render('wizard/index.html.twig', [
-		'form' => $form->createView(),
-		'flow' => $flow,
-	]);
-    }
+	#[Route('/wizard', name: 'app_wizard')]
+	public function createWizard(Request $request, CreateWizardFlow $flow, EntityManagerInterface $entityManager) {
+		return $this->processFlow($request, new Tournament(), $flow,
+				'wizard/index.html.twig', $entityManager);
+	}
+
+	protected function processFlow(Request $request, $formData, FormFlowInterface $flow, $template, $entityManager) {
+		$flow->bind($formData);
+
+		$form = $submittedForm = $flow->createForm();
+		if ($flow->isValid($submittedForm)) {
+			$flow->saveCurrentStepData($submittedForm);
+
+			if ($flow->nextStep()) {
+				// create form for next step
+				$form = $flow->createForm();
+			} else {
+				// flow finished
+				// ...
+				$entityManager->persist($flow->getFormData());
+				$entityManager->flush();
+
+				$flow->reset();
+
+				return $this->redirectToRoute('app_home');
+			}
+		}
+
+		if ($flow->redirectAfterSubmit($submittedForm)) {
+			$params = $this->formFlowUtil->addRouteParameters(array_merge($request->query->all(),
+					$request->attributes->get('_route_params')), $flow);
+
+			return $this->redirectToRoute($request->attributes->get('_route'), $params);
+		}
+
+		return new Response($this->twig->render($template, [
+			'form' => $form->createView(),
+			'flow' => $flow,
+			'formData' => $formData,
+		]));
+	}
+
 }

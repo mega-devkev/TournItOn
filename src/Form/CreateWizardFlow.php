@@ -4,28 +4,42 @@ namespace App\Form;
 
 use Craue\FormFlowBundle\Form\FormFlow;
 use Craue\FormFlowBundle\Form\FormFlowInterface;
-use App\Form\CreateWizardForm;
 
 class CreateWizardFlow extends FormFlow {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	protected function loadStepsConfig() {
+		$formType = CreateWizardForm::class;
+
 		return [
-			1 => [
-				'label' => 'Allgemein',
-				'form_type' => CreateWizardForm::class,
+			[
+				'label' => 'Allgemeines',
+				'form_type' => $formType,
 			],
-			2 => [
+			[
 				'label' => 'Logo',
-				'form_type' => CreateWizardForm::class,
+				'form_type' => $formType,
 			],
-			3 => [
+			[
 				'label' => 'Individualisierung',
-                'form_type' => CreateWizardForm::class,
+				'form_type' => $formType,
 			],
-            4 => [
-               'label' => 'Player-Team',
-               'form_type' => CreateWizardForm::class, 
-            ],
+			[
+				'label' => 'Player / Team',
+				'form_type' => $formType,
+			],
+			[
+				'label' => 'confirmation',
+			],
 		];
 	}
+
+	public function getFormOptions($step, array $options = []) {
+		$options = parent::getFormOptions($step, $options);
+
+		return $options;
+	}
+
 }
