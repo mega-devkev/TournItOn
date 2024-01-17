@@ -68,8 +68,8 @@ class WizardController extends AbstractController {
 				$tournament = new Tournament();
 				$setting = new Setting();
 				$sponsor = new Sponsor();
-				$player = new Player();
 				$team = new Team();
+				$player = new Player();
 				$statistic = new Statistic();
 
 
@@ -89,7 +89,7 @@ class WizardController extends AbstractController {
 				$setting->setLoosecolor($flow->getFormData()->loosecolor);
 				$setting->setBackgroundURL($flow->getFormData()->backgroundURL);
 
-				$player->setTeamID($team->getId());
+				$player->setTeamID($team);
 				$player->setName($flow->getFormData()->playerOrTeamName);
 
 				// todo: Prüfung ob Player oder Team toggled ist
@@ -109,6 +109,9 @@ class WizardController extends AbstractController {
 				 $entityManager->flush();
 				 
 				 $entityManager->persist($setting);
+				 $entityManager->flush();
+
+				 $entityManager->persist($team);
 				 $entityManager->flush();
 
 				 $entityManager->persist($player);
