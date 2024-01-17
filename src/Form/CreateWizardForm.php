@@ -79,8 +79,7 @@ class CreateWizardForm extends AbstractType {
             case 4:
                 $builder
                     ->add('playerOrTeamName')
-                    ->add('statistics')
-                    ->add('Add', ButtonType::class);
+                    ->add('statistics');
                 break;
 		}
 	}
