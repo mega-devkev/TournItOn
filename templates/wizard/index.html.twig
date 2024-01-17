@@ -16,99 +16,295 @@
 	<div class="Allgemein" style="width: 210px; height: 69px; left: 450px; top: 280px; position: absolute; color: #110F0F; font-size: 40px; font-family: Roboto; font-weight: 500; word-wrap: break-word">Allgemein</div>
 	<div class="Line6" style="width: 340.95px; height: 0px; left: 887px; top: 381px; position: absolute; transform: rotate(179.79deg); transform-origin: 0 0; border: 2px #9597A7 solid"></div>
 	<div class="Line4" style="width: 268.01px; height: 0px; left: 1203px; top: 378px; position: absolute; transform: rotate(179.63deg); transform-origin: 0 0; border: 2px #9597A7 solid"></div>
-	<div class="Line5" style="width: 357.01px; height: 0px; left: 1610px; top: 380px; position: absolute; transform: rotate(-179.68deg); transform-origin: 0 0; border: 2px #9597A7 solid"></div>
+	<div class="Line5" style="width: 353.01px; height: 0px; left: 1606px; top: 380px; position: absolute; transform: rotate(-179.68deg); transform-origin: 0 0; border: 2px #9597A7 solid"></div>
 	<div class="Logo" style="width: 107px; height: 69px; left: 866px; top: 280px; position: absolute; color: #110F0F; font-size: 40px; font-family: Roboto; font-weight: 300; word-wrap: break-word">Logo</div>
 	<div class="Individualisierung" style="width: 369px; height: 69px; left: 1090px; top: 280px; position: absolute; color: #131212; font-size: 40px; font-family: Roboto; font-weight: 300; word-wrap: break-word">Individualisierung</div>
 	<div class="PlayerTeam" style="width: 298px; height: 69px; left: 1529px; top: 271px; position: absolute; color: #110F0F; font-size: 40px; font-family: Roboto; font-weight: 300; word-wrap: break-word">Player / Team</div>
 
 	<!-- Region Button -->
-	
+
 	{% block body %}
-	
+
 	{{ form_start(form) }}
-	
+
 	<!-- Region Form -->
 	<div style="width: 424px; height: 128px; left: 950px; top: 500px; position: absolute">
 		{{ form_errors(form) }}
 	</div>
 	{% if flow.getCurrentStepNumber() == 1 %}
-	<div class="Group80" style="width: 424px; height: 128px; left: 600px; top: 660px; position: absolute">
+	<div class="Group80" style="width: 424px; height: 128px; left: 469px; top: 460px; position: absolute">
 		{{ form_row(form.name) }}
 	</div>
 
-	<div class="Group81" style="width: 424px; height: 128px; left: 1235px; top: 660px; position: absolute">
+	<div class="Group81" style="width: 424px; height: 128px; left: 1235px; top: 460px; position: absolute">
 		{{ form_row(form.location) }}
 	</div>
-	<div class="Group82" style="width: 333px; height: 111px; left: 609px; top: 872px; position: absolute">
+	<div class="Group82" style="width: 333px; height: 111px; left: 469px; top: 672px; position: absolute">
 		{{ form_row(form.startTime) }}
 	</div>
-	<div class="Group83" style="width: 333px; height: 111px; left: 1235px; top: 872px; position: absolute">
+	<div class="Group83" style="width: 333px; height: 111px; left: 1235px; top: 672px; position: absolute">
 		{{ form_row(form.endTime) }}
 	</div>
 
 	{% elseif flow.getCurrentStepNumber() == 2 %}
-	<script>
-		document.getElementById("step1").style.background = "green";
-		document.getElementById("step2").style.background = "#545970";
-	</script>
-	<div class="Group80" style="width: 424px; height: 128px; left: 600px; top: 660px; position: absolute">
-		{{ form_row(form.logoURL) }} 
-	</div>
 
-	<div class="Group81" style="width: 424px; height: 128px; left: 1235px; top: 660px; position: absolute">
-		{{ form_row(form.mainSponsor) }}
-	</div>
+	<div class="Overview" style="width: 2256px; height: 1744px; background: #F3FDF6">
 
-	<div class="Group82" style="width: 333px; height: 111px; left: 609px; top: 872px; position: absolute">
-		{{ form_row(form.secondarySponsor) }}
+		<div class="Group69" style="width: 382.40px; height: 60.76px; left: 469px; top: 429px; position: absolute">
+		<div style="display:flex">
+			{{ form_row(form.logoURL) }}
+			<button style='height:45px; margin-left:15px; margin-top:28px' class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addlogoURL()">Add</button>
+		</div>
+		</div>
+		<img class="UnsplashN04fifhhvK" id="logoURL" style="width: 157px; height: 117px; left: 503px; top: 513px; position: absolute; background: linear-gradient(0deg, rgba(84, 89, 112, 0.49) 0%, rgba(84, 89, 112, 0.49) 100%); border-radius: 8px" src="https://via.placeholder.com/157x117" />
+
+		<div class="Group85" style="width: 382.40px; height: 60.76px; left: 469px; top: 705px; position: absolute">
+			<div style="display:flex">
+				{{ form_row(form.mainSponsor) }}
+				<button style='height:45px; margin-left:15px; margin-top:28px' class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addmainSponsor()">Add</button>
+			</div>
+		</div>
+		<img style="width: 157px; height: 119px; left: 503px; top: 783px; position: absolute; background: linear-gradient(0deg, rgba(84, 89, 112, 0.49) 0%, rgba(84, 89, 112, 0.49) 100%)" id='mainSponsor'  src="https://via.placeholder.com/157x119" />
+
+		<div class="Group87" style="width: 382.40px; height: 60.76px; left: 1205px; top: 705px; position: absolute">
+			<div style="display:flex">
+				{{ form_row(form.secondarySponsor) }}
+				<button style='height:45px; margin-left:15px; margin-top:28px' class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addsecondarySponsor()">Add</button>
+			</div>
+		</div>
+		<img class="UnsplashN04fifhhvK" style="width: 157px; height: 119px; left: 1248px; top: 783px; position: absolute; background: linear-gradient(0deg, rgba(84, 89, 112, 0.49) 0%, rgba(84, 89, 112, 0.49) 100%)" id ='secondarySponsor' src="https://via.placeholder.com/157x119" />
+		<!-- <img class="UnsplashN04fifhhvK" style="width: 157px; height: 119px; left: 1443px; top: 783px; position: absolute; background: linear-gradient(0deg, rgba(84, 89, 112, 0.49) 0%, rgba(84, 89, 112, 0.49) 100%)" src="https://via.placeholder.com/157x119" /> -->
+
+		<script>
+			document.getElementById("step1").style.background = "green";
+			document.getElementById("step2").style.background = "#545970";
+
+			function addsecondarySponsor() {
+			var getIdElement =document.getElementById('secondarySponsor');
+			var	reader = new FileReader('createWizard_secondarySponsor');
+
+			var preview = document.querySelector('img');
+			var file = document.querySelector('input[id=createWizard_secondarySponsor]').files[0];
+
+			reader.onloadend = function() {
+				getIdElement.src = reader.result;
+			}
+
+			if (file) {
+				reader.readAsDataURL(file);
+			} else {
+				preview.src = "";
+			}
+		}
+
+		function addmainSponsor() {
+			var getIdElement =document.getElementById('mainSponsor');
+			var	reader = new FileReader('createWizard_mainSponsor');
+
+			var preview = document.querySelector('img');
+			var file = document.querySelector('input[id=createWizard_mainSponsor]').files[0];
+
+			reader.onloadend = function() {
+				getIdElement.src = reader.result;
+			}
+
+			if (file) {
+				reader.readAsDataURL(file);
+			} else {
+				preview.src = "";
+			}
+
+		}
+
+		function addlogoURL() {
+			var getIdElement =document.getElementById('logoURL');
+			var	reader = new FileReader('createWizard_logoURL');
+
+			var preview = document.querySelector('img');
+			var file = document.querySelector('input[id=createWizard_logoURL]').files[0];
+
+			reader.onloadend = function() {
+				getIdElement.src = reader.result;
+			}
+
+			if (file) {
+				reader.readAsDataURL(file);
+			} else {
+				preview.src = "";
+			}
+		}
+		</script>
 	</div>
 
 	{% elseif flow.getCurrentStepNumber() == 3 %}
+
+	<div class="Component1" style="width: 434px; height: 517px; left: 469px; top: 460px; position: absolute; ">
+		{{ form_row(form.playerCard) }}
+	</div>
+
+	<div class="Group44" style="width: 424px; height: 128px; left: 1159px; top: 460px; position: absolute">
+		{{ form_row(form.textcolor) }}
+	</div>
+	<div class="Group51" style="width: 424px; height: 128px; left: 1159px; top: 649px; position: absolute">
+		{{ form_row(form.wincolor) }}
+	</div>
+	<div class="Group47" style="width: 424px; height: 128px; left: 1159px; top: 865px; position: absolute">
+		{{ form_row(form.loosecolor) }}
+	</div>
+	<div class="Group49" style="width: 451.54px; height: 111px; left: 460.46px; top: 605px; position: absolute">
+		<div style="display:flex">
+			{{ form_row(form.backgroundURL) }}
+			<button style='height:45px; margin-left:15px; margin-top:28px' class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addImage()">Add</button>
+		</div>
+	</div>
+	<div class="Group50" style="width: 324.08px; height: 73px; left: 450px; top: 05px; position: absolute">
+		<div class="Group3" style="width: 98.99px; height: 73px; left: 0px; top: 0px; position: absolute">
+			<div class="Ellipse5" style="width: 98.99px; height: 73px; left: 0px; top: 675px; position: absolute; background: white; border-radius: 9999px"></div>
+			<img class="Camera" id='backImage' style="width: 161.02px; height: 125px; left: 18.98px; top: 675px; position: absolute" src="https://via.placeholder.com/61x45" />
+		</div>
+	</div>
+
 	<script>
 		document.getElementById("step1").style.background = "green";
 		document.getElementById("step2").style.background = "green";
 		document.getElementById("step3").style.background = "#545970";
-	</script>
 
-	<div class="Group80" style="width: 424px; height: 128px; left: 600px; top: 660px; position: absolute">
-		{{ form_row(form.playerCard) }}
-	</div>
+		// createWizard_BackgroundImage
+		function addImage() {
+			var preview = document.querySelector('img');
+			var file = document.querySelector('input[type=file]').files[0];
+			var backImage = document.getElementById('backImage');
+			var reader = new FileReader();
+			reader.onloadend = function() {
+				backImage.src = reader.result;
+			}
 
-	<div class="Group81" style="width: 424px; height: 128px; left: 1235px; top: 660px; position: absolute">
-		{{ form_row(form.textcolor) }}
-	</div>
-	<div class="Group82" style="width: 333px; height: 111px; left: 609px; top: 872px; position: absolute">
-		{{ form_row(form.wincolor) }}
-	</div>
-	<div class="Group83" style="width: 333px; height: 111px; left: 1235px; top: 872px; position: absolute">
-		{{ form_row(form.loosecolor) }}
-	</div>
-	<div class="Group84" style="width: 333px; height: 111px; left: 609px; top: 1000px; position: absolute">
-		{{ form_row(form.backgroundURL) }}
-	</div>
-	{% elseif flow.getCurrentStepNumber() == 4 %}
-	<script>
-		document.getElementById("step1").style.background = "green";
-		document.getElementById("step2").style.background = "green";
-		document.getElementById("step3").style.background = "green";
-		document.getElementById("step4").style.background = "#545970";
+			if (file) {
+				reader.readAsDataURL(file);
+			} else {
+				preview.src = "";
+			}
+		}
 	</script>
-	<div class="Group80" style="width: 424px; height: 128px; left: 600px; top: 660px; position: absolute">
+</div>
+{% elseif flow.getCurrentStepNumber() == 4 %}
+<div class="Teams" style="width: 134px; height: 40px; left: 469px; top: 510px; position: absolute; color: #110F0F; font-size: 32px; font-family: Roboto; font-weight: 300; word-wrap: break-word">Teams<br /></div>
+<div class="Stats" style="width: 156px; height: 46px; left: 1395px; top: 510px; position: absolute; color: #110F0F; font-size: 40px; font-family: Roboto; font-weight: 300; word-wrap: break-word">Stats<br /></div>
+<div class="Player" style="width: 180px; height: 61px; left: 681px; top: 507px; position: absolute; color: #110F0F; font-size: 32px; font-family: Roboto; font-weight: 300; word-wrap: break-word">Player<br /></div>
+
+<div style="width: 347px; height: 63px; left: 469px; top: 600px; position: absolute; ">
+	<div class="input-group mb-3">
 		{{ form_row(form.playerOrTeamName) }}
-	</div>
-
-	<div class="Group81" style="width: 424px; height: 128px; left: 1235px; top: 660px; position: absolute">
-		{{ form_row(form.statistics) }}
+		<button style='height:45px; margin-top:33px; margin-left:5px' class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addPlayerOrTeam()">Add</button>
 	</div>
 </div>
+
+<div class="Toggle" style="width: 115px; height: 46px; left: 563px; top: 507px; position: absolute">
+	<div class="form-check form-switch">
+		<input style='width:100px; height:50px' class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+	</div>
+</div>
+<div class="InputField" style="width: 313px; height: 48px; left: 467px; top: 715px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+	<div class="InputField" style="width: 313px; height: 48px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+		<h5>Your PlayerOrTeam</h5>
+		<!-- <p style="margin-right:150px" id="playerOrTeam"></p> -->
+	</div>
+</div>
+
+<div class="InputField" style="width: 535px; height: 48px; left: 467px; top: 715px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+	<div style="margin-top:335px;
+		padding: 4px;
+		width: 535px;
+		height: 210px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		text-align: justify;">
+		<p style="margin-right:150px" id="playerOrTeam"></p>
+	</div>
+</div>
+<div class="InputField" style="width: 375px; height: 48px; left: 418px; top: 713px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+
+
+</div>
+<div class="InputField" style="width: 313px; height: 48px; left: 1278px; top: 599px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+	{{ form_row(form.statistics) }}
+	<button style='height:45px; margin-top:23px; margin-left:5px' class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addStatistik()">Add</button>
+</div>
+
+<div class="InputField" style="width: 313px; height: 48px; left: 1278px; top: 715px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+	<div class="InputField" style="width: 313px; height: 48px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+		<h5>Your Tourniment statistik</h5>
+	</div>
+</div>
+<div class="InputField" style="width: 535px; height: 48px; left: 1278px; top: 715px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+	<div style="margin-top:335px;
+		padding: 4px;
+		width: 535px;
+		height: 210px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		text-align: justify;">
+		<p id="statistiks"></p>
+	</div>
+</div>
+
+<script>
+	document.getElementById("step1").style.background = "green";
+	document.getElementById("step2").style.background = "green";
+	document.getElementById("step3").style.background = "green";
+	document.getElementById("step4").style.background = "#545970";
+	let checkedPlayerOrTeam = false;
+	let playerOrTeam = [];
+	let stats = [];
+
+	function addPlayerOrTeam() {
+		// createWizard_PlayerOrTeamName
+		console.log(document.getElementById("createWizard_playerOrTeamName"));
+		let PlayerOrTeamName = document.getElementById("createWizard_playerOrTeamName").value;
+		playerOrTeam.push(PlayerOrTeamName);
+
+		let text = "<ul class='list-group'>";
+		let fLen = playerOrTeam.length;
+		for (let i = 0; i < fLen; i++) {
+			text += "<div style='display:-webkit-box; list-style:none;'> <li style='width:335px; font-size:25px; margin-bottom:15px;' class='list-group-item' aria-current='true'>" + playerOrTeam[i] + "</li> <button type='button' class='btn'><i style='font-size: 1.7rem;' class='bi bi-trash3'></i></button> </div>";
+		}
+		text += "</ul>";
+
+		document.getElementById("playerOrTeam").innerHTML = text;
+		document.getElementById("createWizard_playerOrTeamName").value = '';
+	}
+
+	function addStatistik() {
+		let statistikValue = document.getElementById("createWizard_statistics").value;
+		stats.push(statistikValue);
+
+		let text = "<ul class='list-group'>";
+		let fLen = stats.length;
+		for (let i = 0; i < fLen; i++) {
+			text += "<div style='display:-webkit-box; list-style:none;'> <li style='width:335px; font-size:25px; margin-bottom:15px;' class='list-group-item' aria-current='true'>" + stats[i] + "</li> <button type='button' onclick='removeStats()' class='btn'><i style='font-size: 1.7rem;' class='bi bi-trash3'></i></button> </div>";
+		}
+		text += "</ul>";
+
+		document.getElementById("statistiks").innerHTML = text;
+		document.getElementById("createWizard_statistics").value = '';
+		console.log(stats);
+	}
+</script>
+{% elseif flow.getCurrentStepNumber() == 5 %}
+<script>
+	document.getElementById("step1").style.background = "green";
+	document.getElementById("step2").style.background = "green";
+	document.getElementById("step3").style.background = "green";
+	document.getElementById("step4").style.background = "green";
+</script>
 {% endif %}
 
 <div class="Group79" style="width: 1014px; height: 154px; left: 639px; top: 1151px; position: absolute">
-		{% include '@CraueFormFlow/FormFlow/buttons.html.twig' %}
-		<!-- <button style="width: 362.56px; height: 154px; padding-left: 110px; padding-right: 110px; padding-top: 31px; padding-bottom: 31px; left: 0px; top: 0px; position: absolute; border-radius: 40px; border: 4px #9597A7 solid" type="button" class="btn btn-secondary"><i style="font-size: 5rem;" class="bi bi-arrow-left-circle"></i></button>
+	{% include '@CraueFormFlow/FormFlow/buttons.html.twig' %}
+	<!-- <button style="width: 362.56px; height: 154px; padding-left: 110px; padding-right: 110px; padding-top: 31px; padding-bottom: 31px; left: 0px; top: 0px; position: absolute; border-radius: 40px; border: 4px #9597A7 solid" type="button" class="btn btn-secondary"><i style="font-size: 5rem;" class="bi bi-arrow-left-circle"></i></button>
 		<button style="width: 359.67px; height: 154px; padding-left: 110px; padding-right: 110px; padding-top: 31px; padding-bottom: 31px; left: 654.33px; top: 0px; position: absolute; border-radius: 40px; border: 4px #9597A7 solid" type="button" class="btn btn-secondary"><i style="font-size: 5rem;" class="bi bi-arrow-right-circle"></i></button> -->
-		<!-- <button class="Frame2" style="width: 359.67px; height: 154px; padding-left: 110px; padding-right: 110px; padding-top: 31px; padding-bottom: 31px; left: 654.33px; top: 0px; position: absolute; background: #545970; border-radius: 40px; border: 4px #9597A7 solid; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">Next</button> -->
-	</div>
+	<!-- <button class="Frame2" style="width: 359.67px; height: 154px; padding-left: 110px; padding-right: 110px; padding-top: 31px; padding-bottom: 31px; left: 654.33px; top: 0px; position: absolute; background: #545970; border-radius: 40px; border: 4px #9597A7 solid; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">Next</button> -->
+</div>
 {{ form_end(form) }}
 
 {% endblock %}
