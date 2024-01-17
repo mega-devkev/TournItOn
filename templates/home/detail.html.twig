@@ -1,7 +1,53 @@
 {% extends 'base.html.twig' %}
 
+
+{% set matches = players.playerCard %}
+{% set paths = matches // 2 %}
+{#{% set lvl = 5 %}#}
+
 {% block body %}
-    <h1>Dies ist die Detailseite</h1>
-    {{ tournament.name }}
+
     {{ dump() }}
+
+    <div class="justify-content-around mt-3 tournament-tree">
+        <div class="d-flex flex-row justify-content-around mt-3 tournament-tree-matches">
+            {% for i in range(1, lvl) %}
+                <div class="d-flex flex-column justify-content-around tournament-match-col" style="margin-top: 10vh;">
+                    {% for i in range(1, matches) %}
+                        <svg width="100" height="50" style="margin-bottom: 40px;">
+                            <rect x="0" y="0" width="100" height="25" style="fill:rgb(0,0,255)" />
+                            <rect x="0" y="25" width="100" height="25" style="fill:rgb(0,255,0)" />
+                        </svg>
+                    {% endfor %}
+                </div>
+                {% set matches = matches //2 %}
+            {% endfor %}
+        </div>
+        <div class="d-flex flex-row justify-content-around mt-3 tournament-tree-paths" style="">
+            {% for j in range(lvl -1, 1 ) %}
+                <div class="d-flex flex-column justify-content-around tournament-path-col">
+                        {% if j == 1 %}
+                            <svg height="100" width="100" style="">
+                                <line x1="20" y1="20" x2="50" y2="20" style="stroke:rgb(255,0,0);stroke-width:2" />
+                                <line x1="50" y1="20" x2="50" y2="50" style="stroke:rgb(255,0,0);stroke-width:2" />
+                                <line x1="50" y1="50" x2="100" y2="50" style="stroke:rgb(255,0,0);stroke-width:2" />
+                                <line x1="50" y1="80" x2="50" y2="50" style="stroke:rgb(255,0,0);stroke-width:2" />
+                                <line x1="20" y1="80" x2="50" y2="80" style="stroke:rgb(255,0,0);stroke-width:2" />
+                           </svg>
+                        {% else %}
+                            {% for k in range(paths, 1) %}
+                                <svg height="100" width="100" style="">
+                                   <line x1="20" y1="20" x2="50" y2="20" style="stroke:rgb(255,0,0);stroke-width:2" />
+                                    <line x1="50" y1="20" x2="50" y2="50" style="stroke:rgb(255,0,0);stroke-width:2" />
+                                    <line x1="50" y1="50" x2="100" y2="50" style="stroke:rgb(255,0,0);stroke-width:2" />
+                                    <line x1="50" y1="80" x2="50" y2="50" style="stroke:rgb(255,0,0);stroke-width:2" />
+                                    <line x1="20" y1="80" x2="50" y2="80" style="stroke:rgb(255,0,0);stroke-width:2" />/>
+                                </svg>
+                            {% endfor %}
+                        {% endif %}
+                </div>
+                {% set paths = paths // 2 %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

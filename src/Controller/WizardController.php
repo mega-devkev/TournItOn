@@ -72,16 +72,17 @@ class WizardController extends AbstractController {
 				$player = new Player();
 				$statistic = new Statistic();
 
-
 				$sponsor->setUrl($flow->getFormData()->mainSponsor);
 
 			
 				$tournament->setStartTime($flow->getFormData()->startTime);
 				$tournament->setEndTime($flow->getFormData()->endTime);
 				$tournament->setLocation($flow->getFormData()->location);
-				$tournament->setName($flow->getFormData()->name);					$tournament->setLogoURL($flow->getFormData()->logoURL);
+				$tournament->setName($flow->getFormData()->name);
+                $tournament->setLogoURL($flow->getFormData()->logoURL);
 				$tournament->setMainSponsor($sponsor);
 				$tournament->setSecondarySponsor([$flow->getFormData()->secondarySponsor]);
+                $tournament->setUserId($this->getUser());
 						
 				$setting->setPlayerCard($flow->getFormData()->playerCard);
 				$setting->setTextcolor($flow->getFormData()->textcolor);
@@ -136,5 +137,10 @@ class WizardController extends AbstractController {
 			'formData' => $formData,
 		]));
 	}
+
+    private function searchUser()
+    {
+        return json_decode($this->container->get('serializer')->serialize($this->getuser(), 'json'));
+    }
 
 }
