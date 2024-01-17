@@ -46,12 +46,12 @@ class CreateWizardForm extends AbstractType {
 			case 2:
                 $builder
                     ->add('logoURL', FileType::class, array(
-                        'required' => false,
+                        'required' => true,
                         'label' => 'Upload a Logo',
                         
                     ))
                     ->add('mainSponsor', FileType::class, array(
-                        'required' => false,
+                        'required' => true,
                         'label' => 'Upload the Logo for the Mainsponsor',
                         
                     ))
@@ -63,38 +63,23 @@ class CreateWizardForm extends AbstractType {
 				break;
             case 3:
                 $builder
-                    ->add('PlayerCard', ChoiceType::class, array(
-                        'mapped' => false,
+                    ->add('playerCard', ChoiceType::class, array(
                         'choices' => [
                             'test' => 'testValue',
                         ],
                         ))
-                    ->add('TextColor', null, array(
-                        'mapped' => false,
-                    ))
-                    ->add('Font',  null, array(
-                        'mapped' => false,
-                    ))
-                    ->add('PrimaryColor',  null, array(
-                        'mapped' => false,
-                    ))
-                    ->add('SecondaryColor',  null, array(
-                        'mapped' => false,
-                    ))
-                    ->add('BackgroundImage', FileType::class, array(
+                    ->add('textcolor')
+                    ->add('wincolor')
+                    ->add('loosecolor')
+                    ->add('backgroundURL', FileType::class, array(
                         'required' => true,
                         'label' => 'Upload a Background Image',
-                        'mapped' => false,
                     ));
                 break;
             case 4:
                 $builder
-                    ->add('PlayerOrTeamName', null, array(
-                        'mapped' => false,
-                    ))
-                    ->add('Stats', null, array(
-                        'mapped' => false,
-                    ))
+                    ->add('playerOrTeamName')
+                    ->add('statistics')
                     ->add('Add', ButtonType::class);
                 break;
 		}
@@ -107,7 +92,7 @@ class CreateWizardForm extends AbstractType {
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data' => new Tournament(),
+            // 'data' => new Tournament(),
         ]);
     }
 

@@ -71,17 +71,20 @@
 	</script>
 
 	<div class="Group80" style="width: 424px; height: 128px; left: 600px; top: 660px; position: absolute">
-		{{ form_row(form.PlayerCard) }}
+		{{ form_row(form.playerCard) }}
 	</div>
 
 	<div class="Group81" style="width: 424px; height: 128px; left: 1235px; top: 660px; position: absolute">
-		{{ form_row(form.TextColor) }}
+		{{ form_row(form.textcolor) }}
 	</div>
 	<div class="Group82" style="width: 333px; height: 111px; left: 609px; top: 872px; position: absolute">
-		{{ form_row(form.Font) }}
+		{{ form_row(form.wincolor) }}
 	</div>
 	<div class="Group83" style="width: 333px; height: 111px; left: 1235px; top: 872px; position: absolute">
-		{{ form_row(form.PrimaryColor) }}
+		{{ form_row(form.loosecolor) }}
+	</div>
+	<div class="Group84" style="width: 333px; height: 111px; left: 609px; top: 1000px; position: absolute">
+		{{ form_row(form.backgroundURL) }}
 	</div>
 	{% elseif flow.getCurrentStepNumber() == 4 %}
 	<script>
@@ -91,11 +94,11 @@
 		document.getElementById("step4").style.background = "#545970";
 	</script>
 	<div class="Group80" style="width: 424px; height: 128px; left: 600px; top: 660px; position: absolute">
-		{{ form_row(form.PlayerOrTeamName) }}
+		{{ form_row(form.playerOrTeamName) }}
 	</div>
 
 	<div class="Group81" style="width: 424px; height: 128px; left: 1235px; top: 660px; position: absolute">
-		{{ form_row(form.Stats) }}
+		{{ form_row(form.statistics) }}
 	</div>
 </div>
 {% endif %}

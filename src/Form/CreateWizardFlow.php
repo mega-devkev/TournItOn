@@ -4,6 +4,7 @@ namespace App\Form;
 
 use Craue\FormFlowBundle\Form\FormFlow;
 use Craue\FormFlowBundle\Form\FormFlowInterface;
+use App\Entity\Setting;
 
 class CreateWizardFlow extends FormFlow {
 
@@ -38,6 +39,9 @@ class CreateWizardFlow extends FormFlow {
 
 	public function getFormOptions($step, array $options = []) {
 		$options = parent::getFormOptions($step, $options);
+		// if($step === 3) {
+		// 	$options['data'] = new Setting();
+		// }
 
 		return $options;
 	}
