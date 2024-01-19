@@ -64,3 +64,29 @@ header {
     width: 400px;
     justify-items: center;
 }
+
+.tournament-tree {
+    z-index:  0;
+    position: relative;
+}
+
+.tournament-match-col {
+    margin: 20vw 10vh;
+}
+
+.tournament-path-col {
+    margin-left: 12vw;
+    margin-top: 8vh;
+}
+
+.tournament-tree-matches {
+    z-index:  1;
+    position: absolute;
+    top: -40px;
+
+}
+
+.tournament-tree-paths {
+    z-index:  2;
+    position: absolute;
+}

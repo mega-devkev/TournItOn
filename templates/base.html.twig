@@ -39,11 +39,14 @@
                 </div>
             </header>
         </div>
-        <div id="main" class="container">
-            {% block body %}
 
-            {% endblock %}
-        </div>
+        {% block body%}
+            <div id="main" class="container">
+                {% block body_inner %}
+
+                {% endblock %}
+            </div>
+        {% endblock %}
 
             {% block base_footer%}
 

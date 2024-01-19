@@ -21,6 +21,17 @@ class TournamentRepository extends ServiceEntityRepository
         parent::__construct($registry, Tournament::class);
     }
 
+    public function playerCount($tourunamenId): array
+    {
+        return $this->createQueryBuilder('t')
+            ->join('tournament_player', 'tp')
+            ->where('tp.tournament_id = :tId')
+            ->setParameter('tId', $tourunamenId)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Tournament[] Returns an array of Tournament objects
 //     */

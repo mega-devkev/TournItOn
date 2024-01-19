@@ -66,6 +66,7 @@ class CreateWizardForm extends AbstractType {
                     ->add('playerCard', ChoiceType::class, array(
                         'choices' => [
                             'test' => 'testValue',
+                            '16 Spieler' => '16'
                         ],
                         ))
                     ->add('textcolor')
